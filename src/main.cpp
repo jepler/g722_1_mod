@@ -1,39 +1,65 @@
 #include <pybind11/pybind11.h>
 
+extern "C" {
+#include "common/defs.h"
+}
+
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
 
-int add(int i, int j) {
-    return i + j;
-}
-
 namespace py = pybind11;
+
+#define MAX_SAMPLE_RATE 32000
+#define MAX_FRAMESIZE   (MAX_SAMPLE_RATE/50)
+
+py::bytes encode(py::bytes bytes_in, size_t input_frame_size=320, size_t output_frame_size=80) {
+    if(input_frame_size > MAX_FRAMESIZE) {
+        throw py::value_error("Invalid input_frame_size");
+    }
+    std::string data_in{bytes_in};
+    Word16 mlt_coefs[MAX_FRAMESIZE];
+    Word16 input[MAX_FRAMESIZE];
+    Word16 history[MAX_FRAMESIZE]{};
+    Word16 out_words[MAX_BITS_PER_FRAME / 16];
+    std::string result;
+
+    for(size_t i=0; i<std::size(data_in); i+=2*input_frame_size) {
+        size_t e = std::min(std::size(data_in), i + 2*input_frame_size);
+        std::fill(std::copy(reinterpret_cast<Word16*>(&data_in[i]), reinterpret_cast<Word16*>(&data_in[e]), input), std::end(input), 0);
+
+        auto mag_shift = samples_to_rmlt_coefs(input, history, mlt_coefs, input_frame_size);
+
+        /* Encode the mlt coefs */
+        encoder(output_frame_size * 8,
+                NUMBER_OF_REGIONS,
+                mlt_coefs,
+                mag_shift,
+                out_words);
+
+        result.append(reinterpret_cast<char*>(&out_words[0]), output_frame_size);
+    }
+
+    return py::bytes(result);
+}
 
 PYBIND11_MODULE(python_example, m) {
     m.doc() = R"pbdoc(
-        Pybind11 example plugin
+        Modified G722.1 Encoder
         -----------------------
 
-        .. currentmodule:: python_example
+        .. currentmodule:: g722_1_mod
 
         .. autosummary::
            :toctree: _generate
 
-           add
-           subtract
+           encode
     )pbdoc";
 
-    m.def("add", &add, R"pbdoc(
-        Add two numbers
-
-        Some other explanation about the add function.
-    )pbdoc");
-
-    m.def("subtract", [](int i, int j) { return i - j; }, R"pbdoc(
-        Subtract two numbers
-
-        Some other explanation about the subtract function.
-    )pbdoc");
+    m.def("encode", &encode,
+            py::arg("data"),
+            py::arg("input_frame_size") = 320,
+            py::arg("output_frame_size") = 80,
+            R"pbdoc(Encode raw S16LE audio into modified G722.1 format)pbdoc");
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

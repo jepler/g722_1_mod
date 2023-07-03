@@ -1,3 +1,4 @@
+import glob
 # Available at setup time due to pyproject.toml
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
@@ -13,11 +14,20 @@ __version__ = "0.0.1"
 #   Sort input source files if you glob sources to ensure bit-for-bit
 #   reproducible builds (https://github.com/pybind/python_example/pull/53)
 
+c_srcs = (
+        glob.glob("src/common/*.c") +
+        glob.glob("src/encode/*.c") +
+        glob.glob("src/au/*.c"))
+
+print(c_srcs)
+
 ext_modules = [
     Pybind11Extension("python_example",
-        ["src/main.cpp"],
+        ["src/main.cpp"] + c_srcs,
         # Example: passing in the version to the compiled code
         define_macros = [('VERSION_INFO', __version__)],
+        include_dirs = ['src/common', 'src/au'],
+        extra_compile_args = ['-g3', '-O0'],
         ),
 ]
 
