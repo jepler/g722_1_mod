@@ -26,7 +26,7 @@ setup(
     author_email="jeff@adafruit.com",
     url="https://github.com/jepler/g722_1_mod",
     description="A modified G722.1 encoder",
-    long_description="",
+    long_description="This modified format is used by certain embedded designs.",
     ext_modules=ext_modules,
     extras_require={"test": "pytest"},
     # Currently, build_ext only provides an optional "highest supported C++
