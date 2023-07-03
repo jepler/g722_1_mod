@@ -14,16 +14,9 @@ __version__ = "0.0.1"
 #   Sort input source files if you glob sources to ensure bit-for-bit
 #   reproducible builds (https://github.com/pybind/g722_1_mod/pull/53)
 
-c_srcs = (
-        glob.glob("src/common/*.c") +
-        glob.glob("src/encode/*.c") +
-        glob.glob("src/au/*.c"))
-
-print(c_srcs)
-
 ext_modules = [
     Pybind11Extension("g722_1_mod",
-        ["src/main.cpp"] + c_srcs,
+        ["src/main.cpp"],
         # Example: passing in the version to the compiled code
         define_macros = [('VERSION_INFO', __version__)],
         include_dirs = ['src/common', 'src/au'],

@@ -1,7 +1,18 @@
 #include <pybind11/pybind11.h>
 
 extern "C" {
-#include "common/defs.h"
+#include "au/au_header.c"
+#include "au/endianess_t.c"
+#include "au/wav_header.c"
+#include "common/basop32.c"
+#include "common/common.c"
+#include "common/count.c"
+#include "common/huff_tab.c"
+#include "common/tables.c"
+#include "encode/dct4_a.c"
+#include "encode/encode.c"
+#include "encode/encoder.c"
+#include "encode/sam2coef.c"
 }
 
 #define STRINGIFY(x) #x

@@ -1,3 +1,4 @@
+#pragma once
 /***********************************************************************
 **
 **   ITU-T G.722.1 (2005-05) - Fixed point implementation for main body and Annex C

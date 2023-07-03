@@ -1,3 +1,4 @@
+#pragma once
 // based on: https://www.exploitee.rs/index.php/Teddy_Ruxpin
 
 #define AUDIOHEADER_DEFAULTSIZE 16          // words
