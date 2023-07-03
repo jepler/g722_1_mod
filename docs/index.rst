@@ -1,4 +1,4 @@
-python_example Documentation
+g722_1_mod Documentation
 ============================
 
 Contents:
@@ -6,4 +6,4 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   python_example
+   g722_1_mod

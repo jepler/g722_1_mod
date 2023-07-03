@@ -1,5 +1,5 @@
 #
-# python_example documentation build configuration file, created by
+# g722_1_mod documentation build configuration file, created by
 # sphinx-quickstart on Fri Feb 26 00:29:33 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -49,9 +49,9 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "python_example"
-copyright = "2016, Sylvain Corlay"
-author = "Sylvain Corlay"
+project = "g722_1_mod"
+copyright = "2023 Jeff Epler"
+author = "Jeff Epler"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -203,7 +203,7 @@ html_static_path = ["_static"]
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "python_exampledoc"
+htmlhelp_basename = "g722_1_moddoc"
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -224,9 +224,9 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "python_example.tex",
-        "python_example Documentation",
-        "Sylvain Corlay",
+        "g722_1_mod.tex",
+        "g722_1_mod Documentation",
+        "Jeff Epler",
         "manual",
     ),
 ]
@@ -257,7 +257,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "python_example", "python_example Documentation", [author], 1)
+    (master_doc, "g722_1_mod", "g722_1_mod Documentation", [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -272,10 +272,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "python_example",
-        "python_example Documentation",
+        "g722_1_mod",
+        "g722_1_mod Documentation",
         author,
-        "python_example",
+        "g722_1_mod",
         "One line description of project.",
         "Miscellaneous",
     ),

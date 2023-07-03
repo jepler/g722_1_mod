@@ -12,7 +12,7 @@ __version__ = "0.0.1"
 #
 # Note:
 #   Sort input source files if you glob sources to ensure bit-for-bit
-#   reproducible builds (https://github.com/pybind/python_example/pull/53)
+#   reproducible builds (https://github.com/pybind/g722_1_mod/pull/53)
 
 c_srcs = (
         glob.glob("src/common/*.c") +
@@ -22,22 +22,21 @@ c_srcs = (
 print(c_srcs)
 
 ext_modules = [
-    Pybind11Extension("python_example",
+    Pybind11Extension("g722_1_mod",
         ["src/main.cpp"] + c_srcs,
         # Example: passing in the version to the compiled code
         define_macros = [('VERSION_INFO', __version__)],
         include_dirs = ['src/common', 'src/au'],
-        extra_compile_args = ['-g3', '-O0'],
         ),
 ]
 
 setup(
-    name="python_example",
+    name="g722_1_mod",
     version=__version__,
-    author="Sylvain Corlay",
-    author_email="sylvain.corlay@gmail.com",
-    url="https://github.com/pybind/python_example",
-    description="A test project using pybind11",
+    author="Jeff Epler",
+    author_email="jeff@adafruit.com",
+    url="https://github.com/jepler/g722_1_mod",
+    description="A modified G722.1 encoder",
     long_description="",
     ext_modules=ext_modules,
     extras_require={"test": "pytest"},

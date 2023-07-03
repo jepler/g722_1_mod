@@ -42,7 +42,7 @@ py::bytes encode(py::bytes bytes_in, size_t input_frame_size=320, size_t output_
     return py::bytes(result);
 }
 
-PYBIND11_MODULE(python_example, m) {
+PYBIND11_MODULE(g722_1_mod, m) {
     m.doc() = R"pbdoc(
         Modified G722.1 Encoder
         -----------------------

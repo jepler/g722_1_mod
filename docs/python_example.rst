@@ -1,1 +1,1 @@
-.. automodule:: python_example
+.. automodule:: g722_1_mod
