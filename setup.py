@@ -22,9 +22,7 @@ ext_modules = [
 setup(
     name="g722_1_mod",
     version=__version__,
-    author="Jeff Epler",
-    author_email="jeff@adafruit.com",
-    url="https://github.com/jepler/g722_1_mod",
+    url="https://github.com/adafruit/g722_1_mod",
     description="A modified G722.1 encoder",
     long_description="This modified format is used by certain embedded designs.",
     ext_modules=ext_modules,

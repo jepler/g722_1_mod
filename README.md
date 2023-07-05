@@ -6,11 +6,11 @@ g722_1_mod
 | pip builds           | [![Pip Actions Status][actions-pip-badge]][actions-pip-link] |
 | [`cibuildwheel`][]   | [![Wheels Actions Status][actions-wheels-badge]][actions-wheels-link] |
 
-[actions-badge]:           https://github.com/jepler/g722_1_mod/workflows/Tests/badge.svg
-[actions-pip-link]:        https://github.com/jepler/g722_1_mod/actions?query=workflow%3A%22Pip
-[actions-pip-badge]:       https://github.com/jepler/g722_1_mod/workflows/Pip/badge.svg
-[actions-wheels-link]:     https://github.com/jepler/g722_1_mod/actions?query=workflow%3AWheels
-[actions-wheels-badge]:    https://github.com/jepler/g722_1_mod/workflows/Wheels/badge.svg
+[actions-badge]:           https://github.com/adafruit/g722_1_mod/workflows/Tests/badge.svg
+[actions-pip-link]:        https://github.com/adafruit/g722_1_mod/actions?query=workflow%3A%22Pip
+[actions-pip-badge]:       https://github.com/adafruit/g722_1_mod/workflows/Pip/badge.svg
+[actions-wheels-link]:     https://github.com/adafruit/g722_1_mod/actions?query=workflow%3AWheels
+[actions-wheels-badge]:    https://github.com/adafruit/g722_1_mod/workflows/Wheels/badge.svg
 
 Installation
 ------------
