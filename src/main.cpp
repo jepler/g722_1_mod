@@ -19,7 +19,12 @@ extern "C" {
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
 
+#if defined(__WINDOWS__)
+#define htole16(x) (x)
+#define le16toh(x) (x)
+#else
 #include "portable_endian.h"
+#endif
 
 namespace py = pybind11;
 
@@ -54,7 +59,7 @@ py::bytes encode(py::bytes bytes_in, size_t input_frame_size=320, size_t output_
                 out_words);
 
         for(size_t i=0; i < MAX_BITS_PER_FRAME / 16; i++)
-            out_words[i] = le16toh(out_words[i]);
+            out_words[i] = htole16(out_words[i]);
 
         result.append(reinterpret_cast<char*>(&out_words[0]), output_frame_size);
     }
