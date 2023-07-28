@@ -50,7 +50,7 @@ jobs:
     - uses: pypa/cibuildwheel@v2.14.1
       env:
         CIBW_ARCHS_MACOS: "x86_64 universal2 arm64"
-        CIBW_ARCHS_LINUX: "auto aarch64 ppc64le"
+        CIBW_ARCHS_LINUX: "auto aarch64 ppc64le s390x"
         CIBW_PRERELEASE_PYTHONS: true
 
     - name: Verify clean directory
