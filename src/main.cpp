@@ -19,11 +19,12 @@ extern "C" {
 #define STRINGIFY(x) #x
 #define MACRO_STRINGIFY(x) STRINGIFY(x)
 
-#if defined(__WINDOWS__)
+#if defined(__linux__)
+#include <endian.h>
+#else
+// all others assumed to be little-endian
 #define htole16(x) (x)
 #define le16toh(x) (x)
-#else
-#include "portable_endian.h"
 #endif
 
 namespace py = pybind11;
